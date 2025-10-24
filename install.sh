@@ -33,9 +33,9 @@ chmod +x cf
 mkdir -p /home/container/xy
 cd /home/container/xy
 rm -f *
-curl -sSL -o Xray-linux-64.zip https://github.com/XTLS/Xray-core/releases/download/v$XRAY_VERSION/Xray-linux-$xray_arch.zip
-unzip Xray-linux-64.zip
-rm Xray-linux-64.zip
+curl -sSL -o Xray-linux.zip https://github.com/XTLS/Xray-core/releases/download/v$XRAY_VERSION/Xray-linux-$xray_arch.zip
+unzip Xray-linux.zip
+rm Xray-linux.zip
 mv xray xy
 curl -sSL -o config.json https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/xray-config.json
 sed -i "s/10008/$PORT/g" config.json
