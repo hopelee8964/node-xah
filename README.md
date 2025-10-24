@@ -2,7 +2,7 @@
 
 ## 🚀 快速部署
 
-```
+```bash
 curl -s https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/install.sh |
 env DOMAIN=example.com PORT=27796 bash
 ```
@@ -24,9 +24,9 @@ env DOMAIN=example.com PORT=27796 bash
 
 ## ⚙️ 完整命令示例
 
-```
+```bash
 curl -s https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/install.sh |
-env DOMAIN=example.com PORT=27796 UUID='' XRAY_VERSION=25.10.15 HY2_VERSION=2.6.4 ARGO_VERSION=2025.9.1 ARGO_DOMAIN='' ARGO_TOKEN='' REMARKS_PREFIX='vevc' MAIN_FILE='app.js' bash
+env DOMAIN=example.com PORT=27796 UUID='' XRAY_VERSION=25.10.15 HY2_VERSION=2.6.5 ARGO_VERSION=2025.10.0 ARGO_DOMAIN='' ARGO_TOKEN='' REMARKS_PREFIX='vevc' MAIN_FILE='index.js' bash
 ```
 
 ## 📢 使用说明与免责声明
