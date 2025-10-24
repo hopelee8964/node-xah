@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 XRAY_VERSION="${XRAY_VERSION:-25.10.15}"
-HY2_VERSION="${HY2_VERSION:-2.6.4}"
-ARGO_VERSION="${ARGO_VERSION:-2025.9.1}"
+HY2_VERSION="${HY2_VERSION:-2.6.5}"
+ARGO_VERSION="${ARGO_VERSION:-2025.10.0}"
 DOMAIN="${DOMAIN:-vevc.github.com}"
 PORT="${PORT:-10008}"
 UUID="${UUID:-$(cat /proc/sys/kernel/random/uuid)}"

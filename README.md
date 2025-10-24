@@ -15,8 +15,8 @@ env DOMAIN=example.com PORT=27796 bash
 | **PORT**           | `10008`           | ✅        | 服务器开放端口，Xray 和 Hysteria2 的主监听端口   |
 | **UUID**           | 随机生成          | ⛔        | 用户身份验证唯一标识符。若未设置，将自动随机生成 |
 | **XRAY_VERSION**   | `25.10.15`        | ⛔        | Xray 核心版本号                                  |
-| **HY2_VERSION**    | `2.6.4`           | ⛔        | Hysteria2 核心版本号                             |
-| **ARGO_VERSION**   | `2025.9.1`        | ⛔        | Cloudflared 版本号                               |
+| **HY2_VERSION**    | `2.6.5`           | ⛔        | Hysteria2 核心版本号                             |
+| **ARGO_VERSION**   | `2025.10.0`       | ⛔        | Cloudflared 版本号                               |
 | **ARGO_DOMAIN**    | 自动获取          | ⛔        | Argo Tunnel 的访问域名，启用固定隧道需要设置     |
 | **ARGO_TOKEN**     | *(空)*            | ⛔        | Argo Tunnel 的访问令牌，启用固定隧道需要设置     |
 | **REMARKS_PREFIX** | `vevc`            | ⛔        | 节点备注的前缀标识                               |
