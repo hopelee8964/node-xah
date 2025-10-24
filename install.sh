@@ -11,19 +11,29 @@ ARGO_TOKEN="${ARGO_TOKEN:-}"
 REMARKS_PREFIX="${REMARKS_PREFIX:-vevc}"
 MAIN_FILE="${MAIN_FILE:-index.js}"
 
+sys_arch=amd64
+xray_arch=64
+arch=$(uname -m)
+case "$arch" in
+  arm*|aarch64)
+    sys_arch=arm64
+    xray_arch=arm64-v8a
+    ;;
+esac
+
 curl -sSL -o $MAIN_FILE https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/index.js
 curl -sSL -o package.json https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/package.json
 sed -i "s/index.js/$MAIN_FILE/g" package.json
 
 mkdir -p /home/container/cf
 cd /home/container/cf
-curl -sSL -o cf https://github.com/cloudflare/cloudflared/releases/download/$ARGO_VERSION/cloudflared-linux-amd64
+curl -sSL -o cf https://github.com/cloudflare/cloudflared/releases/download/$ARGO_VERSION/cloudflared-linux-$sys_arch
 chmod +x cf
 
 mkdir -p /home/container/xy
 cd /home/container/xy
 rm -f *
-curl -sSL -o Xray-linux-64.zip https://github.com/XTLS/Xray-core/releases/download/v$XRAY_VERSION/Xray-linux-64.zip
+curl -sSL -o Xray-linux-64.zip https://github.com/XTLS/Xray-core/releases/download/v$XRAY_VERSION/Xray-linux-$xray_arch.zip
 unzip Xray-linux-64.zip
 rm Xray-linux-64.zip
 mv xray xy
@@ -44,7 +54,7 @@ echo $realityUrl >> /home/container/node.txt
 mkdir -p /home/container/h2
 cd /home/container/h2
 rm -f *
-curl -sSL -o h2 https://github.com/apernet/hysteria/releases/download/app%2Fv$HY2_VERSION/hysteria-linux-amd64
+curl -sSL -o h2 https://github.com/apernet/hysteria/releases/download/app%2Fv$HY2_VERSION/hysteria-linux-$sys_arch
 curl -sSL -o config.yaml https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/hysteria-config.yaml
 openssl req -x509 -newkey rsa:2048 -days 3650 -nodes -keyout key.pem -out cert.pem -subj "/CN=$DOMAIN"
 chmod +x h2
