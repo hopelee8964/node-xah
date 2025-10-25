@@ -9,7 +9,7 @@ const SHORT_ID = "YOUR_SHORT_ID";
 const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
 let ARGO_DOMAIN = "leapcell.c.6.8.b.0.d.0.0.1.0.a.2.ip6.arpa";
 const ARGO_TOKEN = "eyJhIjoiMjY5MTA5YzVhNDQ5NDY3NzE2NmRmZThmMDY0YjZhYzciLCJ0IjoiOGU5NmYzNDQtYTI1My00ZTNmLTkzYjgtZTNhOTY2YmZjZmFkIiwicyI6Ik5HRmlPR1ZrTWpRdE56VTRZaTAwTmpoaUxUazNNVEl0WW1ObU1qUmpaVGxrWVRneiJ9";
-const REMARKS_PREFIX = "YOUR_REMARKS_PREFIX";
+const REMARKS_PREFIX = "leapcell";
 
 // Binary and config definitions
 const apps = [
@@ -46,7 +46,7 @@ function printSubInfo() {
     `============================================================
 🚀 WebSocket+Argo & Reality & HY2 Node Info
 ------------------------------------------------------------
-${subInfo.join('\n')}
+${subInfo。join('\n')}
 ============================================================`);
 }
 
