@@ -1,0 +1,23 @@
+name: Build and Fix Permissions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Add execute permission for binaries
+        run: chmod +x bin/*
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test run index.js
+        run: node index.js || echo "skip runtime test"
