@@ -46,7 +46,7 @@ function printSubInfo() {
     `============================================================
 🚀 WebSocket+Argo & Reality & HY2 Node Info
 ------------------------------------------------------------
-${subInfo.join('\n')}
+${subInfo。join('\n')}
 ============================================================`);
 }
 
@@ -72,18 +72,18 @@ function runProcess(app) {
         const tunnelUrl = matches[matches.length - 1];
         ARGO_DOMAIN = new URL(tunnelUrl).hostname;
         subInfo[0] = `vless://${UUID}@${ARGO_DOMAIN}:443?encryption=none&security=tls&sni=${ARGO_DOMAIN}&fp=chrome&type=ws&path=%2F%3Fed%3D2560#${REMARKS_PREFIX}-ws-argo`;
-        fs.writeFile(path.join(__dirname， "node.txt")， subInfo.join('\n')， () => { });
+        fs.writeFile(path。join(__dirname， "node.txt")， subInfo。join('\n')， () => { });
         printSubInfo();
       }
     };
-    child.stdout.on("data"， handleData);
-    child.stderr.on("data"， handleData);
+    child.stdout.on("data", handleData);
+    child.stderr.on("data", handleData);
   }
 
-  child.on("exit"， (code) => {
+  child.on("exit", (code) => {
     console.log(`[EXIT] ${app.name} exited with code: ${code}`);
     console.log(`[RESTART] Restarting ${app.name}...`);
-    setTimeout(() => runProcess(app)， 3000); // restart after 3s
+    setTimeout(() => runProcess(app), 3000); // restart after 3s
   });
 }
 
@@ -94,7 +94,7 @@ function main() {
       runProcess(app);
     }
   } catch (err) {
-    console.error("[ERROR] Startup failed:"， err);
+    console.error("[ERROR] Startup failed:", err);
     process.exit(1);
   }
 }
