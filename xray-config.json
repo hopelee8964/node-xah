@@ -29,7 +29,7 @@
       }
     },
     {
-      "port": 10008,
+      "port": 8080,
       "protocol": "vless",
       "settings": {
         "clients": [
