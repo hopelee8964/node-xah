@@ -15,22 +15,18 @@ const REMARKS_PREFIX = "leapcell";
 const apps = [
   {
     name: "cf",
-    binaryPath: "/home/container/cf/cf",
-    args: ["tunnel", "--no-autoupdate", "--edge-ip-version", "auto", "--protocol", "http2", "--url", "http://localhost:8001"],
-    mode: "filter",
-    pattern: /https:\/\/[a-z0-9-]+\.trycloudflare\.com/g
+    binaryPath: path.join(__dirname, "bin/cloudflared"),
+    args: ["tunnel", "--config", "config.yaml", "run"],
   },
   {
-    name: "xy",
-    binaryPath: "/home/container/xy/xy",
-    args: ["-c", "/home/container/xy/config.json"],
-    mode: "ignore"
+    name: "xray",
+    binaryPath: path.join(__dirname, "bin/xray"),
+    args: ["-config", "xray-config.json"],
   },
   {
-    name: "h2",
-    binaryPath: "/home/container/h2/h2",
-    args: ["server", "-c", "/home/container/h2/config.yaml"],
-    mode: "ignore"
+    name: "hysteria",
+    binaryPath: path.join(__dirname, "bin/hysteria"),
+    args: ["server", "-c", "hysteria-config.yaml"],
   }
 ];
 
