@@ -16,20 +16,20 @@ const apps = [
   {
     name: "cf",
     binaryPath: "/home/container/cf/cf",
-    args: ["tunnel"， "--no-autoupdate"， "--edge-ip-version"， "auto"， "--protocol"， "http2"， "--url"， "http://localhost:8001"],
+    args: ["tunnel", "--no-autoupdate", "--edge-ip-version", "auto", "--protocol", "http2", "--url", "http://localhost:8001"],
     mode: "filter",
     pattern: /https:\/\/[a-z0-9-]+\.trycloudflare\.com/g
   },
   {
     name: "xy",
     binaryPath: "/home/container/xy/xy",
-    args: ["-c"， "/home/container/xy/config.json"],
+    args: ["-c", "/home/container/xy/config.json"],
     mode: "ignore"
   },
   {
     name: "h2",
     binaryPath: "/home/container/h2/h2",
-    args: ["server"， "-c"， "/home/container/h2/config.yaml"],
+    args: ["server", "-c", "/home/container/h2/config.yaml"],
     mode: "ignore"
   }
 ];
@@ -46,20 +46,20 @@ function printSubInfo() {
     `============================================================
 🚀 WebSocket+Argo & Reality & HY2 Node Info
 ------------------------------------------------------------
-${subInfo。join('\n')}
+${subInfo.join('\n')}
 ============================================================`);
 }
 
 if (ARGO_TOKEN) {
   apps[0].mode = "ignore";
-  apps[0].args = ["tunnel"， "--no-autoupdate"， "--edge-ip-version"， "auto"， "--protocol"， "http2"， "run"， "--token"， ARGO_TOKEN];
+  apps[0].args = ["tunnel", "--no-autoupdate", "--edge-ip-version", "auto", "--protocol", "http2", "run", "--token", ARGO_TOKEN];
   printSubInfo();
 }
 
 // Run binary with keep-alive
 function runProcess(app) {
-  const child = spawn(app.binaryPath， app.args， {
-    stdio: app.mode === "filter" ? ["ignore"， "pipe"， "pipe"] : app.mode
+  const child = spawn(app.binaryPath, app.args, {
+    stdio: app.mode === "filter" ? ["ignore", "pipe", "pipe"] : app.mode
   });
 
   if (app.mode === "filter") {
@@ -67,12 +67,12 @@ function runProcess(app) {
       const logText = data.toString();
       const matches = logText.match(app.pattern);
       if (matches && matches.length > 0) {
-        child.stdout.off("data"， handleData);
-        child.stderr.off("data"， handleData);
+        child.stdout.off("data", handleData);
+        child.stderr.off("data", handleData);
         const tunnelUrl = matches[matches.length - 1];
         ARGO_DOMAIN = new URL(tunnelUrl).hostname;
         subInfo[0] = `vless://${UUID}@${ARGO_DOMAIN}:443?encryption=none&security=tls&sni=${ARGO_DOMAIN}&fp=chrome&type=ws&path=%2F%3Fed%3D2560#${REMARKS_PREFIX}-ws-argo`;
-        fs.writeFile(path。join(__dirname， "node.txt")， subInfo。join('\n')， () => { });
+        fs.writeFile(path.join(__dirname, "node.txt"), subInfo.join('\n'), () => { });
         printSubInfo();
       }
     };
